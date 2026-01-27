@@ -11,7 +11,8 @@ LABEL name="rushidholecom"
 
 #RUN git clone https://github.com/rushidholecom/EasyCRUD.git
 
-WORKDIR /EasyCRUD/backend
+WORKDIR /opt
+
 
 COPY application.properties src/main/resources/application.properties
 
