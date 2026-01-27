@@ -6,7 +6,7 @@ USER root
 
 #RUN apt update -y && apt install openjdk-17-jdk git maven -y
 
-WORKDIR /opt
+#WORKDIR /opt
 
 RUN git clone https://github.com/rushidholecom/EasyCRUD.git
 
