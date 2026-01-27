@@ -5,6 +5,7 @@ SHELL [ "/bin/bash" ]
 USER root
 
 #RUN apt update -y && apt install openjdk-17-jdk git maven -y
+RUN apt update && apt install git -y
 
 #WORKDIR /opt
 
