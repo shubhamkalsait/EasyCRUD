@@ -2,14 +2,14 @@ FROM maven:3.8.3-openjdk-17
 LABEL name="rushidholecom"
 
 #SHELL ["/bin/sh"]
-USER root
+#USER root
 
 #RUN apt update -y && apt install openjdk-17-jdk git maven -y
-RUN apt update && apt install git -y
+#RUN apt update && apt install git -y
 
 #WORKDIR /opt
 
-RUN git clone https://github.com/rushidholecom/EasyCRUD.git
+#RUN git clone https://github.com/rushidholecom/EasyCRUD.git
 
 WORKDIR /EasyCRUD/backend
 
