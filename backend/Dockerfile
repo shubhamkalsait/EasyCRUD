@@ -1,7 +1,7 @@
 FROM maven:3.8.3-openjdk-17
 LABEL name="rushidholecom"
 
-SHELL "/bin/sh"
+#SHELL ["/bin/sh"]
 USER root
 
 #RUN apt update -y && apt install openjdk-17-jdk git maven -y
