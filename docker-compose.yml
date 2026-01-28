@@ -1,7 +1,7 @@
 services:
   database:
-   images: mariadb:latest
-   enviromennt:
+   image: mariadb:latest
+   environment:
     MARIADB_ROOT_PASSWORD: "redhat"
     MYSQL_DATABASE: "student_db"
   volumes:
@@ -11,7 +11,7 @@ services:
  
   backend:
    build: ./backend
-   enviorment:
+   environment:
     SPRING_DATASOURCE_URL: jdbc:mariadb://172.17.0.2:3306/student_db
     SPRING_DATASOURCE_USERNAME: root
     SPRING_DATASOURCE_PASSWORD: redhat
