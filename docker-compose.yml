@@ -5,7 +5,7 @@ services:
     MARIADB_ROOT_PASSWORD: "redhat"
     MYSQL_DATABASE: "student_db"
   volumes:
-   - my-vol: /var/lib/mariadb 
+   my-vol: /var/lib/mariadb 
   ports:
    - "3306:3306"
  
