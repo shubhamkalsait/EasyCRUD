@@ -13,8 +13,9 @@ LABEL name="rushidholecom"
 
 WORKDIR /opt
 
+COPY . .
 
-COPY application.properties src/main/resources/application.properties
+#COPY application.properties src/main/resources/application.properties
 
 RUN mvn clean package -DskipTests
 
