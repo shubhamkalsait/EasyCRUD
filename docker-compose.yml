@@ -19,7 +19,7 @@ services:
     SPRING_JPA_SHOW_SQL: true
     SERVER_PORT: 8080
    ports:
-      - "8080:8080" 
+    - "8080:8080" 
    depends_on:
      - database  
 
@@ -30,7 +30,7 @@ services:
     environment:
       PUBLIC_IP: "18.141.192.115"
     depends_on:
-      - backend
+     - backend
 
 volumes:
   my-vol: {} 
