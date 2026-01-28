@@ -24,7 +24,7 @@ services:
      - database  
 
   frontend:
-    build: ./frontend
+    build: ./frontendS
     ports:
       - "80:80"
     environment:
