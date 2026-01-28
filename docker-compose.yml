@@ -1,36 +1,41 @@
+version: "3.8"
+
 services:
   database:
-   image: mariadb:latest
-   environment:
-    MARIADB_ROOT_PASSWORD: "redhat"
-    MYSQL_DATABASE: "student_db"
-  volumes:
-   my-vol: /var/lib/mariadb 
-  ports:
-   - "3306:3306"
- 
+    image: mariadb:latest
+    container_name: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: redhat
+      MYSQL_DATABASE: student_db
+    volumes:
+      - my-vol:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
   backend:
-   build: ./backend
-   environment:
-    SPRING_DATASOURCE_URL: jdbc:mariadb://172.17.0.2:3306/student_db
-    SPRING_DATASOURCE_USERNAME: root
-    SPRING_DATASOURCE_PASSWORD: redhat
-    SPRING_JPA_HIBERNATE_DDL_AUTO: update
-    SPRING_JPA_SHOW_SQL: true
-    SERVER_PORT: 8080
-   ports:
-    - "8080:8080" 
-   depends_on:
-     - database  
+    build: ./backend
+    container_name: spring-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://database:3306/student_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: redhat
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
 
   frontend:
     build: ./frontendS
-    ports:
-     - "80:80"
+    container_name: frontend
     environment:
       PUBLIC_IP: "18.141.192.115"
+    ports:
+      - "80:80"
     depends_on:
-     - backend
+      - backend
 
 volumes:
-  my-vol: {} 
+  my-vol:
