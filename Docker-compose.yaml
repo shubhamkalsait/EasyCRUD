@@ -1,0 +1,37 @@
+services:
+  database:
+   images: mariadb:latest
+   enviromennt:
+    MARIADB_ROOT_PASSWORD: "redhat"
+    MYSQL_DATABASE: "student_db"
+  volumes:
+    my-vol: /var/lib/mariadb 
+  ports:
+   - "3306:3306"
+ 
+  backend:
+   build: ./backend
+   ports:
+    -"8080:8080"
+   enviorment:
+     SPRING_DATASOURCE_URL: jdbc:mariadb://172.17.0.2:3306/student_db
+     SPRING_DATASOURCE_USERNAME: root
+     SPRING_DATASOURCE_PASSWORD: redhat
+     SPRING_JPA_HIBERNATE_DDL_AUTO: update
+     SPRING_JPA_SHOW_SQL: true
+     SERVER_PORT: 8080
+
+   depends_on:
+     - database  
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    environment:
+      PUBLIC_IP: "18.141.192.115"
+    depends_on:
+      - backend
+
+volumes:
+  my-vol: {} 
