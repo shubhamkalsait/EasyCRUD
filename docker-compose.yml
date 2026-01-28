@@ -7,12 +7,12 @@ services:
   volumes:
     my-vol: /var/lib/mariadb 
   ports:
-   - "3306:3306"
+    "3306:3306"
  
   backend:
    build: ./backend
    ports:
-    -"8080:8080"
+    "8080:8080"
    enviorment:
     SPRING_DATASOURCE_URL: jdbc:mariadb://172.17.0.2:3306/student_db
     SPRING_DATASOURCE_USERNAME: root
@@ -26,7 +26,7 @@ services:
   frontend:
     build: ./frontendS
     ports:
-      - "80:80"
+     "80:80"
     environment:
       PUBLIC_IP: "18.141.192.115"
     depends_on:
