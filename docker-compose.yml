@@ -28,7 +28,7 @@ services:
       - database
 
   frontend:
-    build: ./frontendS
+    build: ./frontend
     container_name: frontend
     environment:
       PUBLIC_IP: "18.141.192.115"
