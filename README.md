@@ -56,3 +56,29 @@ EXIT;
 3. DB_PASS
 4. DB_PORT
 5. DB_NAME
+
+
+
+## k8s deployment
+
+```shell
+git clone <EasyCRUD>
+cd yaml
+kubectl apply -f .
+cd ../backend
+# update app.properties - clusterIP of db-service
+docker build .
+docker login
+docker push
+# update deployment file to use your image
+kubectl apply -f .
+# update .env - enpoint of Ingree-LB 
+docker build .
+docker login
+docker push
+# update deployment file to use your image
+kubectl apply -f .
+```
+
+
+
